@@ -3,13 +3,13 @@
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.5.7 |
-| <a name="requirement_oci"></a> [oci](#requirement\_oci) | >= 5.40.0 |
+| <a name="requirement_oci"></a> [oci](#requirement\_oci) | >= 6.6.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_oci"></a> [oci](#provider\_oci) | >= 5.40.0 |
+| <a name="provider_oci"></a> [oci](#provider\_oci) | >= 6.6.0 |
 
 ## Modules
 
