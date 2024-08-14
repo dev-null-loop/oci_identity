@@ -4,8 +4,9 @@ variable "compartment_id" {
 }
 
 variable "description" {
-  description = "the description you assign to the compartment during creation, does not have to be unique and it's changeable."
+  description = "(Required) (Updatable) The description you assign to the compartment during creation. Does not have to be unique, and it's changeable."
   type        = string
+  default     = null
 }
 
 variable "name" {
@@ -23,4 +24,16 @@ variable "freeform_tags" {
   description = "Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace."
   type        = map(string)
   default     = {}
+}
+
+variable "state" {
+  description = "(Optional) A filter to return only resources that match the given lifecycle state name exactly."
+  type        = string
+  default     = "ACTIVE"
+}
+
+variable "access_level" {
+  description = "(Optional) Valid values are `ANY` and `ACCESSIBLE`. Default is `ANY`. Setting this to `ACCESSIBLE` returns only those compartments for which the user has INSPECT permissions directly or indirectly (permissions can be on a resource in a subcompartment). For the compartments on which the user indirectly has INSPECT permissions, a restricted set of fields is returned."
+  type        = string
+  default     = "ANY"
 }
