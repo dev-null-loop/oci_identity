@@ -1,4 +1,4 @@
-check "health_check" {
+check "dynamic_group_exists" {
   data "oci_identity_dynamic_groups" "these" {
     compartment_id = var.tenancy_id
     name           = var.name
@@ -7,15 +7,9 @@ check "health_check" {
 
   assert {
     condition     = length(data.oci_identity_dynamic_groups.these.dynamic_groups) == 0
-    error_message = "Error: cannot create dynamic group ${var.name} - it already exists."
+    error_message = "Error: Dynamic Group ${var.name} already exists."
   }
 }
-
-# data "oci_identity_dynamic_groups" "these" {
-#   compartment_id = var.tenancy_id
-#   name           = var.name
-#   state          = var.state
-# }
 
 resource "oci_identity_dynamic_group" "this" {
   compartment_id = var.tenancy_id
