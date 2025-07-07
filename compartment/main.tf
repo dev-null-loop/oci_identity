@@ -12,10 +12,13 @@ resource "oci_identity_compartment" "this" {
   name           = var.name
   freeform_tags  = var.freeform_tags
   enable_delete  = var.enable_delete
-  lifecycle {
-    precondition {
-      condition     = length(data.oci_identity_compartments.these.compartments) == 0
-      error_message = "Error: cannot create compartment ${var.name} - it already exists."
-    }
+  provisioner "local-exec" {
+    when        = create
+    interpreter = ["/bin/bash", "-c"]
+    command = (
+      length(data.oci_identity_compartments.these.compartments) > 0 ?
+      "/bin/false" :
+      "/bin/true"
+    )
   }
 }
